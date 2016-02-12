@@ -22,8 +22,21 @@ def binToHex(stream):
 def binToB64(stream):
     stream = binascii.b2a_base64(stream)
     return stream
+def ueToBin(stream):
+    stream = binascii.a2b_qp(stream)
+    return stream
+def ueToHex(stream):
+    stream = binascii.a2b_qp(stream)
+    stream = binascii.b2a_hex(stream)
+    return stream
+def ueToB64(stream):
+    stream = binascii.a2b_qp(stream)
+    stream = binascii.b2a_base64(stream)
+    return stream
+def binaryString(stream):
+        return ''.join([bin(ord(letter))[2:].zfill(8) for letter in stream])
 class StreamConvert:
-    def __init__(self,stream):
+    def __init__(self,stream=''):
         self.stream = stream
     def hexToBinary(self):
         self.stream = binascii.a2b_hex(self.stream)

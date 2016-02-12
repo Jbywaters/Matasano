@@ -1,6 +1,6 @@
 import binascii
 class FileConvert:
-    def __init__(self, file):
+    def __init__(self, file=''):
         self.file = file
         f = open(self.file, "rb")
         self.content = f.readlines()
@@ -31,6 +31,8 @@ class FileConvert:
             self.content[index] = binascii.b2a_base64(lines)
     def getContent(self):
         return self.content
+    def integrate(self):
+        self.content = ''.join(x for x in self.content)
     def writeConverted(self,name):
         f = open(name, "wb")
         f.writelines("%s\n" % l for l in self.content) # Writelines is a lie, as it does not write a newline after each string
