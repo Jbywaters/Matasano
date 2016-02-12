@@ -13,3 +13,4 @@ class AESstuff:
 
     def decrypt(self, data):
         return self.cipher.decrypt(data)
+
